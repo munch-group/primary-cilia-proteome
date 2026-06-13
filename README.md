@@ -1,4 +1,4 @@
-# Ciliary protein lists from the Human Protein Atlas — methods and data dictionary
+# Ciliary protein lists from the Human Protein Atlas: methods and data dictionary
 
 Fetch the data to `ciliary_proteins_hpa.csv` like this:
 
@@ -15,9 +15,9 @@ proteins were annotated to four primary-cilium regions ("primary cilium",
 three ciliated cell lines.
 
 Genes were collected by querying the HPA programmatic download API
-(`search_download.php`) once for each of six subcellular-location categories —
+(`search_download.php`) once for each of six subcellular-location categories
 *Primary cilium*, *Primary cilium tip*, *Primary cilium transition zone*,
-*Basal body*, *Centrosome* and *Centriolar satellite* — using the
+*Basal body*, *Centrosome* and *Centriolar satellite* using the
 `subcell_location` field. The latter two microtubule-organizing-centre
 categories were included to capture the wider basal-body/centrosome context from
 which cilia are templated. The six result sets were combined and de-duplicated
@@ -39,6 +39,22 @@ Ensembl 109 / GRCh38 annotation (e.g. a GTF).
 > Note: confirm the version string and Ensembl release against the HPA release
 > history (https://www.proteinatlas.org/about/releases) for the exact version
 > you query, and update the assembly statement if you use a later release.
+
+These are the six HPA subcellular-location categories, ordered roughly from the cilium tip down to the cytoplasmic bodies around the base. The first four are the cilium proper plus its anchor (the Hansen et al. annotations); the last two are the microtubule-organizing-centre (MTOC) context from which cilia are built.
+
+Primary cilium: A single, non-motile microtubule-based projection (a 9+0 axoneme) that extends from the surface of most quiescent and differentiated cells and acts as a sensory/signalling antenna (Hedgehog, many GPCRs, receptor tyrosine kinases, TGF-β/BMP, Wnt). As an HPA annotation it marks proteins localizing along the ciliary shaft/axoneme, as distinct from the tip and transition zone.
+
+Primary cilium tip: The distal end of the axoneme. It is a specialized compartment where intraflagellar transport (IFT) trains turn around, where axonemal microtubules often transition to singlets, and where signalling output is concentrated (e.g. GLI processing in Hedgehog signalling) along with tubulin post-translational modification. The annotation captures proteins enriched specifically at this distal point.
+
+Primary cilium transition zone: The short region immediately distal to the basal body where the axoneme docks to the membrane. Y-shaped linker complexes here form the "ciliary gate," a selective diffusion barrier that controls which proteins and lipids enter or leave the cilium; many ciliopathy complexes (NPHP, MKS, etc.) reside here. The annotation marks proteins at this gating region.
+
+Basal body: The modified mother centriole that migrates to and docks at the plasma membrane and templates (nucleates) the ciliary axoneme, anchored through transition fibres/distal appendages. It is the structural base of the cilium; the annotation marks proteins at that base.
+
+Centrosome: The main MTOC of animal cells: a pair of centrioles (mother and daughter) embedded in pericentriolar material that organizes the interphase microtubule array and the mitotic spindle poles. The mother centriole is the same organelle that becomes the basal body when a cell builds a cilium, which is why centrosome and cilium proteomes overlap heavily. The annotation marks proteins at the centrioles/pericentriolar material.
+
+Centriolar satellite: Small (~70–100 nm), membraneless, electron-dense granules that cluster around the centrosome and move along microtubules, typically scaffolded by PCM1. They act as trafficking and storage hubs that deliver components to the centrosome and cilium and help regulate centrosome and cilium biogenesis. The annotation marks proteins residing in these cytoplasmic bodies rather than on the centriole itself.
+
+Because the mother centriole, basal body, and centrosome are physically the same structure at different cell-cycle/differentiation states, a large fraction of genes appear in more than one of these categories: that overlap is biological, not redundancy in the data.
 
 ## Per-compartment gene counts
 
